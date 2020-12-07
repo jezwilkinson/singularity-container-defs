@@ -1,0 +1,30 @@
+Bootstrap: docker
+From: nvidia/cuda:11.0-devel-rc
+
+%labels
+
+    Maintainer "Jeremy Wilkinson" <jeremy.wilkinson@cern.ch>
+    Architecture x86_64
+    Version 0.0.7_CUDA11-dev
+%help
+This is a minimal container for running Hipe4ML (0.0.7) with XGBoost, including NVidia GPU support with CUDA 11.0. Based on the official CUDA image from NVidia, https://hub.docker.com/r/nvidia/cuda. 
+NOTE: If using a GPU method in XGBoost such as "gpu_tree", the container must be run with the --nv switch (e.g. "singularity exec --nv [COMMAND]") in order to access the driver binaries on the host machine.
+This environment is also compatible with CPU-only running of Hipe4ML on any host machine, without any additional setup.
+
+%post
+    echo "installing build tools"
+    apt update
+    apt -y install software-properties-common build-essential
+    add-apt-repository universe
+    apt -y install python3 python3-pip vim
+
+    # add CMake and pytest for building/running XGBoost examples
+    python3 -m pip install --upgrade cmake
+    python3 -m pip install pytest
+
+    # XGBoost included in prereqs for hipe4ml, no need to install separately
+    python3 -m pip install hipe4ml
+    
+    # Seaborn for extra output plots
+    python3 -m pip install seaborn
+
