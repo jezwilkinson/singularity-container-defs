@@ -15,20 +15,18 @@ version 1.0.2: xxhash support, fix issue with LLVM compilation
 %post
     echo "installing build tools"
     apt update
+
     apt -y install software-properties-common build-essential
-    add-apt-repository universe
-    apt -y install python3 python3-pip vim
-    
-    # llvm (pip version has Issues)
-    apt -y install llvm-9
-    export LLVM_CONFIG=/usr/bin/llvm-config-9
+    apt -y install python3 python3-pip vim git pkg-config
+    # self-update pip before installing python packages
+    python3 -m pip install --upgrade pip
+    apt install -y libre2-dev libre2-4
 
     # add CMake and pytest for building/running XGBoost examples
     python3 -m pip install --upgrade cmake
     python3 -m pip install pytest
     # uproot with xxhash for lz4 compression support
-    python3 -m pip install uproot xxhash awkward
-
+    python3 -m pip install uproot lz4 xxhash awkward cython 
     # XGBoost included in prereqs for hipe4ml, no need to install separately
     python3 -m pip install hipe4ml
     
