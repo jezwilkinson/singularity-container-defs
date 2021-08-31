@@ -1,0 +1,41 @@
+Bootstrap: docker
+From: nvidia/cuda:11.4.1-devel-centos7
+
+%labels
+
+    Maintainer "Jeremy Wilkinson" <jeremy.wilkinson@cern.ch>
+    Architecture x86_64
+    Version 1.0.5_centos7-devel 
+%help
+This is a minimal container for running Hipe4ML (0.0.7) with XGBoost, including NVidia GPU support with CUDA 11.0. Based on the official CUDA image from NVidia, https://hub.docker.com/r/nvidia/cuda. 
+NOTE: If using a GPU method in XGBoost such as "gpu_tree", the container must be run with the --nv switch (e.g. "singularity exec --nv [COMMAND]") in order to access the driver binaries on the host machine.
+This environment is also compatible with CPU-only running of Hipe4ML on any host machine, without any additional setup.
+version 1.0.5: switch to centos7 for compatibility with CVMFS
+
+
+%post
+    echo "installing build tools"
+    yum update
+    yum -y install initscripts
+    #equivalent of Debian build-essential
+    yum -y install gcc gcc-c++ make binutils 
+    
+    yum -y install python36 python36-devel python36-pip vim git pkg-config
+
+
+    # Additional libraries required for running ROOT/AliPhysics from CVMFS
+    yum -y install libX11-devel libXft-devel libXpm-devel libXext-devel openssl-devel
+
+    yum -y install environment-modules 
+
+    # self-update pip before installing python packages
+    python3 -m pip install --upgrade pip
+    python3 -m pip install wheel
+#    yum install -y libre2-dev libre2-4
+    # add CMake and pytest for building/running XGBoost examples
+    python3 -m pip install --upgrade cmake
+    # uproot with xxhash for lz4 compression support
+    # uproot3 is for compatibility with writing files (not suppported in uproot4)
+    # seaborn for extra output plots, pyyaml for YAML support
+    python3 -m pip install --upgrade setuptools
+    python3 -m pip install pytest uproot lz4 xxhash awkward cython hipe4ml uproot3 seaborn pyyaml
