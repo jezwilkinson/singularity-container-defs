@@ -9,5 +9,6 @@ This environment is also compatible with CPU-only running of Hipe4ML on any host
 
 
 # singularity-o2dev
-Minimal build environment for ALICE O2/O2Physics software, pulling from https://hub.docker.com/r/alisw/slc7-builder and adding standard dependencies
-Compilation of ALICE software requires --no-home to be passed to singularity, to avoid clash with system Python
+Minimal build environment for ALICE O2/O2Physics software, pulling from https://hub.docker.com/r/alisw/slc7-builder and adding standard dependencies.
+
+Compilation of ALICE software requires `--no-home` to be passed to singularity, to avoid clash with system Python
