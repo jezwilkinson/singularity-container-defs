@@ -7,8 +7,8 @@
 ####################################################
 
 # Keep singularity cache local to this folder
-export SINGULARITY_CACHEDIR=$PWD/cache
-export SINGULARITY_TMPDIR=$PWD/tmp
+#export SINGULARITY_CACHEDIR=$PWD/cache
+#export SINGULARITY_TMPDIR=$PWD/tmp
 
 #run singularity build
-singularity build cuda_xgboost_env.sif singularity_cudaxgboost.def 
+singularity build --fakeroot cuda_xgboost_env.sif singularity_cudaxgboost.def 

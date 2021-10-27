@@ -5,17 +5,20 @@ From: nvidia/cuda:11.4.1-devel-centos7
 
     Maintainer "Jeremy Wilkinson" <jeremy.wilkinson@cern.ch>
     Architecture x86_64
-    Version 1.0.5_centos7-devel 
+    Version 1.0.6_centos7-devel 
 %help
 This is a minimal container for running Hipe4ML (0.0.7) with XGBoost, including NVidia GPU support with CUDA 11.0. Based on the official CUDA image from NVidia, https://hub.docker.com/r/nvidia/cuda. 
 NOTE: If using a GPU method in XGBoost such as "gpu_tree", the container must be run with the --nv switch (e.g. "singularity exec --nv [COMMAND]") in order to access the driver binaries on the host machine.
 This environment is also compatible with CPU-only running of Hipe4ML on any host machine, without any additional setup.
-version 1.0.5: switch to centos7 for compatibility with CVMFS
+version 1.0.6: adding automatic export of Python environment variables
+
+%environment
+    export PYTHONPATH=$PYTHONPATH:/usr/lib64/python36.zip:/usr/lib64/python3.6/:/usr/lib64/python3.6/lib-dynload/:/usr/local/lib64/python3.6/site-packages/:/usr/local/lib/python3.6/site-packages/:/usr/lib64/python3.6/site-packages/:/usr/lib/python3.6/site-packages/
 
 
 %post
     echo "installing build tools"
-    yum update
+    yum -y update
     yum -y install initscripts
     #equivalent of Debian build-essential
     yum -y install gcc gcc-c++ make binutils 
@@ -37,5 +40,6 @@ version 1.0.5: switch to centos7 for compatibility with CVMFS
     # uproot with xxhash for lz4 compression support
     # uproot3 is for compatibility with writing files (not suppported in uproot4)
     # seaborn for extra output plots, pyyaml for YAML support
+    # fastparquet for parquet support
     python3 -m pip install --upgrade setuptools
-    python3 -m pip install pytest uproot lz4 xxhash awkward cython hipe4ml uproot3 seaborn pyyaml
+    python3 -m pip install pytest uproot lz4 xxhash awkward cython hipe4ml uproot3 seaborn pyyaml fastparquet
