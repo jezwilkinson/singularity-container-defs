@@ -1,0 +1,38 @@
+Bootstrap: docker
+From: nvidia/cuda:11.3.1-runtime-ubuntu20.04
+
+%labels
+
+    Maintainer "Jeremy Wilkinson" <jeremy.wilkinson@cern.ch>
+    Architecture x86_64
+    Version 1.0.0-devel 
+
+%help
+Minimal container for running Pytorch including NVidia GPU support with CUDA 11.0. Based on the official CUDA image from NVidia, https://hub.docker.com/r/nvidia/cuda. 
+NOTE: In order to access the NVidia drivers the container must be invoked with the --nv switch (e.g. "singularity exec --nv [COMMAND]") in order to access the driver binaries on the host machine.
+version 1.0.0: first version
+
+%post
+    export DEBIAN_FRONTEND="noninteractive"
+    export TZ="Europe/Berlin"
+    apt update
+    apt -y install software-properties-common build-essential
+    apt -y install python3 python3-pip vim git pkg-config
+    # self-update pip before installing python packages
+    python3 -m pip install --upgrade pip
+
+    # add CMake and pytest for building/running XGBoost examples
+    python3 -m pip install --upgrade cmake
+    # uproot with xxhash for lz4 compression support
+    # uproot3 is for compatibility with writing files (not suppported in uproot4)
+    # seaborn for extra output plots, pyyaml for YAML support
+    python3 -m pip install --upgrade setuptools
+    python3 -m pip install pytest uproot lz4 xxhash awkward cython uproot3 seaborn pyyaml zstandard
+
+    # ONNX runtime for possible export of torch models to O2
+    python3 -m pip install onnxruntime onnxruntime-gpu
+
+    # pytorch with GPU support
+    python3 -m pip install torch==1.10.1+cu113 torchvision==0.11.2+cu113 torchaudio==0.10.1+cu113 -f https://download.pytorch.org/whl/cu113/torch_stable.html
+    
+
