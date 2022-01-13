@@ -5,10 +5,10 @@ From: alisw/slc7-builder
 
     Maintainer "Jeremy Wilkinson" <jeremy.wilkinson@cern.ch>
     Architecture x86_64
-    Version 1.0.3
+    Version 1.0.4
 %help
 Container of alisw SLC build environment
-version 1.0.3: bump python to 3.6.10
+version 1.0.4: add GNU Parallel 
 
 %environment
 
@@ -23,23 +23,9 @@ version 1.0.3: bump python to 3.6.10
 #    yum install -y alice-o2-full-deps alibuild
     
     yum -y install vim git pkg-config rsync
-
+    
     yum -y install python3 python3-devel python3-pip 
     pip install alibuild
 
-#    alternatives --set python /usr/bin/python3
-#    python3 -m pip install --upgrade pip
-#    python3 -m pip install setuptools
-#
-#
-#
-#    # Additional libraries required for running ROOT/AliPhysics from CVMFS
-#    yum -y install libX11-devel libXft-devel libXpm-devel libXext-devel openssl-devel 
-#    yum -y install environment-modules 
-#    yum -y install glx-utils xorg-x11-server-Xorg mesa-dri-drivers
-#    yum -y install glfw glfw-devel
-#    yum -y install libfabric gsl gsl-devel
-
-
-#    # self-update pip before installing python packages
-#    python3 -m pip install wheel
+    # Install GNU Parallel for Run3 validation framework
+    yum -y install parallel
