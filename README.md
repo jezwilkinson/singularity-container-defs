@@ -7,6 +7,9 @@ NOTE: If using a GPU method in XGBoost such as "gpu_tree", the container must be
 
 This environment is also compatible with CPU-only running of Hipe4ML on any host machine, without any additional setup.
 
+# singularity-cudatorch
+Singularity container definition for Pytorch with CUDA support (Pytorch 1.10.1, CUDA 11.3)
+Based on Docker image from https://hub.docker.com/r/nvidia/cuda
 
 # singularity-o2dev
 Minimal build environment for ALICE O2/O2Physics software, pulling from https://hub.docker.com/r/alisw/slc7-builder and adding standard dependencies.
