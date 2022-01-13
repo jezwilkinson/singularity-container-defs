@@ -6,3 +6,9 @@ This is a minimal container for running Hipe4ML (https://github.com/hipe4ml/hipe
 NOTE: If using a GPU method in XGBoost such as "gpu_tree", the container must be run with the --nv switch (e.g. "singularity exec --nv [COMMAND]") in order to access the driver binaries on the host machine.
 
 This environment is also compatible with CPU-only running of Hipe4ML on any host machine, without any additional setup.
+
+
+# singularity-o2dev
+Minimal build environment for ALICE O2/O2Physics software, pulling from https://hub.docker.com/r/alisw/slc7-builder and adding standard dependencies.
+
+Compilation of ALICE software requires `--no-home` to be passed to singularity, to avoid clash with system Python
