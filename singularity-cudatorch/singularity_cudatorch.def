@@ -27,7 +27,7 @@ version 1.0.0: first version
     # uproot3 is for compatibility with writing files (not suppported in uproot4)
     # seaborn for extra output plots, pyyaml for YAML support
     python3 -m pip install --upgrade setuptools
-    python3 -m pip install pytest uproot lz4 xxhash awkward cython uproot3 seaborn pyyaml zstandard
+    python3 -m pip install pytest uproot lz4 sklearn xxhash awkward cython uproot3 seaborn pyyaml zstandard
 
     # ONNX runtime for possible export of torch models to O2
     python3 -m pip install onnxruntime onnxruntime-gpu
