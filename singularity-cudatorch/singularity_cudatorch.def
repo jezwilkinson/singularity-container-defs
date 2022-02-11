@@ -10,7 +10,7 @@ From: nvidia/cuda:11.3.1-runtime-ubuntu20.04
 %help
 Minimal container for running Pytorch including NVidia GPU support with CUDA 11.0. Based on the official CUDA image from NVidia, https://hub.docker.com/r/nvidia/cuda. 
 NOTE: In order to access the NVidia drivers the container must be invoked with the --nv switch (e.g. "singularity exec --nv [COMMAND]") in order to access the driver binaries on the host machine.
-version 1.0.1: add PyOD
+version 1.0.1: add PyOD, tensorflow, combo, xgboost
 
 %post
     export DEBIAN_FRONTEND="noninteractive"
@@ -34,5 +34,6 @@ version 1.0.1: add PyOD
 
     # pytorch with GPU support
     python3 -m pip install torch==1.10.1+cu113 torchvision==0.11.2+cu113 torchaudio==0.10.1+cu113 -f https://download.pytorch.org/whl/cu113/torch_stable.html
-    
+
+    python3 -m pip install tensorflow combo xgboost
 
