@@ -42,7 +42,7 @@ The build script has created and initialised an aliBuild environment for you und
 - `aliBuild build O2Physics --defaults o2 -j30`
 - `alienv enter O2Physics::latest`
 
-Important: ALWAYS run `alienv enter` once after building to cache the environment details while the container is still writable. If you miss this step, the eventual .sif will be unable to load your environment
+Important: ALWAYS run `alienv enter` once after building to cache the environment details while the container is still writable. If you miss this step, the eventual .sif will be unable to load your environment.
 
 ## Packaging the sandbox into a .SIF container
 Exit out of your container, and then run
@@ -58,7 +58,7 @@ You can now copy your exported `.sif` file to another filesystem (`/lustre`, you
 - `singularity shell singularity_o2deploy.sif`
 - `alienv -w /opt/alibuild enter O2Physics::latest`
 
-If you are using distributed computing, you may need to initialise an AliEn token and then copy it to somewhere on network storage that the farm nodes can access. Create a folder for token storage, and then:
+If you are using distributed computing, you may need to initialise an AliEn token and then copy it to somewhere on network storage that the farm nodes can access. Create a folder for token storage, and then (**outside** of the container):
 - `source /cvmfs/alice.cern.ch/etc/login.sh`
 - `alienv enter xjalienfs::1.3.7-19`
 - `alien-token-init`
