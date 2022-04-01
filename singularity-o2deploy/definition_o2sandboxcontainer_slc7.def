@@ -7,8 +7,8 @@ From: alisw/slc7-builder
     Architecture x86_64
     Version 1.0.5
 %help
-Container of alisw SLC build environment
-version 1.0.5: fix broken pip commands
+Container of alisw SLC build environment for deployment
+version 1.0.5: fix pip commands
 
 %environment
 
@@ -30,3 +30,11 @@ version 1.0.5: fix broken pip commands
 
     # Install GNU Parallel for Run3 validation framework
     yum -y install parallel
+
+    mkdir -p /opt/alibuild
+    cd /opt/alibuild
+    aliBuild analytics off
+    aliBuild init
+    aliBuild init O2 --defaults o2
+    aliBuild init O2Physics --defaults o2
+
