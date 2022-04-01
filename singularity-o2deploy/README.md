@@ -22,20 +22,22 @@ This script invokes the build with the following:
 A new folder will be created, named `sandboxo2/`. This folder is your **sandbox container**, which is editable, unlike a normal .sif container.
 If you ever need to reset your container to scratch and start over, run this script again and say "yes" when prompted to remove the existing directory
 
-## Entering the build environment
-Use the script `enterBuildEnv.sh`. This will shell into the sandbox with the following switches:
+## Entering the build environment and building O2Physics
+Use the script `enterBuildEnv.sh` to enter your build environment. This is equivalent to running `singularity shell` into the sandbox folder with the following switches:
 - `--no-home`: ignore home directory (for python installation)
 - `--fakeroot`: grant fakeroot privileges to edit files
 - `--writable`: allow container to be written to
 
 The build script has created and initialised an aliBuild environment for you under the folder `/opt/alibuild`: There you will find the usual source folders for O2 and O2Physics.
 
-### Add your Github branch to the contained source folder and pull
+#### Add your Github branch to the contained source folder and pull
+- `./enterBuildEnv.sh`  (if not already in the singularity session)
 - `cd /opt/alibuild/O2Physics`
 - `git remote add [user] http://github.com/[user]/O2Physics`
 - `git pull [user] [branchname]`
 
-### Build O2Physics using the pulled branch
+#### Build O2Physics using the pulled branch
+- `./enterBuildEnv.sh` (if not already in the singularity session)
 - `cd /opt/alibuild`
 - `aliBuild build O2Physics --defaults o2 -j30`
 - `alienv enter O2Physics::latest`
