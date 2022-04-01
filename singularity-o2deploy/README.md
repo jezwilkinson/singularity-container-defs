@@ -18,6 +18,7 @@ This script invokes the build with the following:
 - `--fakeroot`: grants "fake root" rights (required for build)
 - `--sandbox`: Creates a writable "sandbox" instead of a compressed `.sif`
 - `--fix-perms`: Sets permissions in the folder such that it can be removed by the user later on
+
 A new folder will be created, named `sandboxo2/`. This folder is your **sandbox container**, which is editable, unlike a normal .sif container.
 If you ever need to reset your container to scratch and start over, run this script again and say "yes" when prompted to remove the existing directory
 
