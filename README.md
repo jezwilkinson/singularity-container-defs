@@ -15,3 +15,8 @@ Based on Docker image from https://hub.docker.com/r/nvidia/cuda
 Minimal build environment for ALICE O2/O2Physics software, pulling from https://hub.docker.com/r/alisw/slc7-builder and adding standard dependencies.
 
 Compilation of ALICE software requires `--no-home` to be passed to singularity, to avoid clash with system Python
+
+# singularity-o2deploy
+Scripts and definitions for a sandboxed environment for building and deploying O2Physics to distributed cluster computing, when direct building on network storage is not possible. Base environment is pulled from https://hub.docker.com/r/alisw/slc7-builder with standard dependencies added.
+
+See documentation under singularity-o2deploy/README.md for full steps/instructions.
