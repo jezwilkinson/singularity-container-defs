@@ -56,7 +56,7 @@ This process will take a little while - even if it looks like it's not doing muc
 You can now copy your exported `.sif` file to another filesystem (`/lustre`, your own laptop, wherever) and use it to run your version of O2Physics.
 
 - `singularity shell singularity_o2deploy.sif`
-- `alienv -w /opt/alibuild enter O2Physics::latest`
+- `alienv -w /opt/alibuild/sw enter O2Physics::latest`
 
 If you are using distributed computing, you may need to initialise an AliEn token and then copy it to somewhere on network storage that the farm nodes can access. Create a folder for token storage, and then (**outside** of the container):
 - `source /cvmfs/alice.cern.ch/etc/login.sh`
@@ -72,7 +72,7 @@ These will be accessed by setting `JALIEN_TOKEN_CERT` and `JALIEN_TOKEN_KEY` to 
 singularity shell /path/to/singularity_o2deploy.sif<<\EOF
 export JALIEN_TOKEN_CERT=/path/to/tokenstore/tokencert_$UID.pem
 export JALIEN_TOKEN_KEY=/path/to/tokenstore/tokenkey_$UID.pem
-alienv -w /opt/alibuild enter O2Physics::latest
+alienv -w /opt/alibuild/sw enter O2Physics::latest
 
 # Your O2 workflow goes here
  o2-analysis-pid-tpc-full --add-qa 1 --aod-file /path/to/AO2D.root | \
