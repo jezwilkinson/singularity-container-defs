@@ -6,6 +6,8 @@ These scripts and instructions will allow you to package your own custom build o
 All scripts require `fakeroot` rights to be applied to your user account on the build server. Alternatively, the same commands from the scripts can be run on your local machine with administrative rights, substituting `sudo singularity` instead of `singularity --fakeroot`.
 Keep this environment **as clean as possible**: Any additions will expand the size of the container, and may push it over the limit and cause the SIF export to fail. ***Only build one branch at a time into this sandbox***.
 
+If using the `--docker-login` switch below, you will also need to make a Dockerhub account at https://hub.docker.com/
+
 ## Contents
 - `definition_buildcontainer_slc7.def`: Singularity build definition for O2 build container.
 - `init_sandbox.sh`: First-time initialisation script to create sandboxed container from definition
@@ -18,6 +20,8 @@ This script invokes the build with the following:
 - `--fakeroot`: grants "fake root" rights (required for build)
 - `--sandbox`: Creates a writable "sandbox" instead of a compressed `.sif`
 - `--fix-perms`: Sets permissions in the folder such that it can be removed by the user later on
+- `--force`: Forces rebuilding the existing sandbox from scratch
+- `--docker-login`: (optional) Tells singularity to request a login for Dockerhub (use in case of rate limiting for anonymous requests)
 
 A new folder will be created, named `sandboxo2/`. This folder is your **sandbox container**, which is editable, unlike a normal .sif container.
 If you ever need to reset your container to scratch and start over, run this script again and say "yes" when prompted to remove the existing directory
