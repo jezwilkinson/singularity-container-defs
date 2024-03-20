@@ -26,10 +26,5 @@ version 1.0.6: upgrade to alma9 for parity with central build systems
     dnf install -y git vim parallel 
     dnf install -y alice-o2-full-deps alibuild   
 
-    # Initialise folder 
-    mkdir -p /opt/alibuild
-    cd /opt/alibuild
-    aliBuild analytics off
-    aliBuild init
-    aliBuild init O2 --defaults o2
-    aliBuild init O2Physics --defaults o2
+
+    
