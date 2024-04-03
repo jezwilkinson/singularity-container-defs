@@ -12,11 +12,11 @@ Singularity container definition for Pytorch with CUDA support (Pytorch 1.10.1, 
 Based on Docker image from https://hub.docker.com/r/nvidia/cuda
 
 # singularity-o2dev
-Minimal build environment for ALICE O2/O2Physics software, pulling from https://hub.docker.com/r/alisw/slc7-builder and adding standard dependencies.
+Minimal build environment for ALICE O2/O2Physics software, pulling from https://hub.docker.com/r/almalinux/9-base and installing standard AliBuild dependencies.
 
-Compilation of ALICE software requires `--no-home` to be passed to singularity, to avoid clash with system Python
+Compilation of ALICE software requires `--no-home` to be passed to singularity, to avoid clash with system Python. Can also be used to run ALICE software from CVMFS.
 
 # singularity-o2deploy
-Scripts and definitions for a sandboxed environment for building and deploying O2Physics to distributed cluster computing, when direct building on network storage is not possible. Base environment is pulled from https://hub.docker.com/r/alisw/slc7-builder with standard dependencies added.
+Scripts and definitions for a sandboxed environment for building and deploying O2Physics to distributed cluster computing, when direct building on network storage is not possible. Base environment is pulled from https://hub.docker.com/r/almalinux/9-base with standard aliBuild dependencies added and initialising O2/O2Physics as dev packages under /opt/alibuild.
 
 See documentation under singularity-o2deploy/README.md for full steps/instructions.
