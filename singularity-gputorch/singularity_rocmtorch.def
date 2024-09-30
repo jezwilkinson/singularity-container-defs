@@ -5,11 +5,11 @@ From: rocm/pytorch:latest-centos7
 
     Maintainer "Jeremy Wilkinson" <jeremy.wilkinson@cern.ch>
     Architecture x86_64
-    Version 1.0.0-devel 
+    Version 1.0.1-devel 
 
 %help
-Minimal container for running Pytorch including AMD GPU support with ROCm. Based on the official ROCm image from NVidia, https://hub.docker.com/r/rocm/pytorch. 
-version 1.0.0: first version
+Minimal container for running Pytorch including AMD GPU support with ROCm. Based on the official ROCm image from AMD, https://hub.docker.com/r/rocm/pytorch. 
+version 1.0.1: add optuna
 
 
 %post
@@ -27,7 +27,8 @@ version 1.0.0: first version
     # uproot3 is for compatibility with writing files (not suppported in uproot4)
     # seaborn for extra output plots, pyyaml for YAML support
     python3 -m pip install --upgrade setuptools
-    python3 -m pip install pytest uproot lz4 sklearn xxhash awkward cython uproot3 seaborn pyyaml zstandard pyod
+    python3 -m pip install --upgrade scikit-learn
+    python3 -m pip install pytest uproot lz4 xxhash awkward cython uproot3 seaborn pyyaml zstandard pyod
 
     # ONNX runtime for possible export of torch models to O2
     python3 -m pip install onnxruntime onnxruntime-gpu onnx
@@ -36,5 +37,5 @@ version 1.0.0: first version
 
 #    python3 -m pip install torch torchvision --extra-index-url https://download.pytorch.org/whl/rocm4.5.2
 
-    python3 -m pip install tensorflow combo xgboost
+    python3 -m pip install tensorflow combo xgboost optuna
 
