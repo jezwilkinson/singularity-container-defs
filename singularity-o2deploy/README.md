@@ -1,6 +1,7 @@
-# Sandbox builder for deploying O2 to farm
+# DEPRECATED: Sandbox builder for deploying O2 to farm
 
 These scripts and instructions will allow you to package your own custom build of O2Physics from your own local machine or a local disk on a build server, to deploy for testing on distributed computing (e.g. your institute's computing cluster)
+### NOTE 18/10/2024: The sandboxed version of the container is no longer supported on the GSI cluster and should not be used any more, see https://alice-wiki.gsi.de/Data/BuildingOnScratch for updated build instructions.
 
 ## Requirements
 All scripts require `fakeroot` rights to be applied to your user account on the build server. Alternatively, the same commands from the scripts can be run on your local machine with administrative rights, substituting `sudo singularity` instead of `singularity --fakeroot`.
