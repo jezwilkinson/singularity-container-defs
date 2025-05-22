@@ -5,13 +5,13 @@ From: almalinux/9-base
 
     Maintainer "Jeremy Wilkinson" <jeremy.wilkinson@cern.ch>
     Architecture x86_64
-    Version 1.0.7
+    Version 1.0.8
 %help
 Container of alisw SLC build environment
-version 1.0.7: add nano as available editor
+version 1.0.8: add OpenGL for O2 debug GUI
 
 %environment
-    ALIBUILD_NO_ANALYTICS=1
+    export ALIBUILD_NO_ANALYTICS=1
 
 %files
     alice-system-deps-alma9.repo /etc/yum.repos.d/alice-system-deps.repo
@@ -23,8 +23,12 @@ version 1.0.7: add nano as available editor
     dnf update -y
     dnf config-manager --set-enabled crb
     dnf group install -y 'Development Tools'
+
+    dnf install -y glx-utils
     dnf install -y git vim parallel emacs nano
     dnf install -y alice-o2-full-deps alibuild   
+   
+    # install direnv for partial builds
 
 
     
