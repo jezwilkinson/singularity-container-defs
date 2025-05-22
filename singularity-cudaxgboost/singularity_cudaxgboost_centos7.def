@@ -5,7 +5,7 @@ From: nvidia/cuda:11.4.1-devel-centos7
 
     Maintainer "Jeremy Wilkinson" <jeremy.wilkinson@cern.ch>
     Architecture x86_64
-    Version 1.0.6_centos7-devel 
+    Version 1.0.7_centos7-devel 
 %help
 This is a minimal container for running Hipe4ML (0.0.7) with XGBoost, including NVidia GPU support with CUDA 11.0. Based on the official CUDA image from NVidia, https://hub.docker.com/r/nvidia/cuda. 
 NOTE: If using a GPU method in XGBoost such as "gpu_tree", the container must be run with the --nv switch (e.g. "singularity exec --nv [COMMAND]") in order to access the driver binaries on the host machine.
@@ -25,7 +25,6 @@ version 1.0.6: adding automatic export of Python environment variables
     
     yum -y install python36 python36-devel python36-pip vim git pkg-config
 
-
     # Additional libraries required for running ROOT/AliPhysics from CVMFS
     yum -y install libX11-devel libXft-devel libXpm-devel libXext-devel openssl-devel
 
@@ -42,4 +41,6 @@ version 1.0.6: adding automatic export of Python environment variables
     # seaborn for extra output plots, pyyaml for YAML support
     # fastparquet for parquet support
     python3 -m pip install --upgrade setuptools
-    python3 -m pip install pytest uproot lz4 xxhash awkward cython hipe4ml uproot3 seaborn pyyaml fastparquet
+    python3 -m pip install pytest uproot lz4 xxhash awkward cython uproot3 seaborn pyyaml zstandard
+    python3 -m pip install hipe4ml scikit-optimize
+    python3 -m pip install xgboost==1.4.2

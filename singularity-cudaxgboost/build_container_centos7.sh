@@ -11,4 +11,4 @@
 #export SINGULARITY_TMPDIR=$PWD/tmp
 
 #run singularity build
-singularity build --fakeroot cuda_xgboost_env_centos7.sif singularity_cudaxgboost_centos7.def 
+singularity build --docker-login  --fakeroot cuda_xgboost_env_centos7.sif singularity_cudaxgboost_centos7.def 

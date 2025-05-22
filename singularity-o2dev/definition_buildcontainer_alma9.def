@@ -23,7 +23,6 @@ version 1.0.8: add OpenGL for O2 debug GUI
     dnf update -y
     dnf config-manager --set-enabled crb
     dnf group install -y 'Development Tools'
-
     dnf install -y glx-utils
     dnf install -y git vim parallel emacs nano
     dnf install -y alice-o2-full-deps alibuild   
